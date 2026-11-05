@@ -7,3 +7,23 @@ openai:
   api-key: ${DEEPSEEK_API_KEY}
   base-url: https://api.deepseek.com
   model: deepseek-flash
+logging:
+  level:
+    root: warn
+    com:
+      intern:
+        agenttest: info
+  file:
+    #==================????==================
+    #????
+    name: logs/smarthelper.log
+  logback:
+    rollingPolicy:
+#      ??????
+      max-file-size: 1KB
+      max-history: 30
+      total-size-cap: 1GB
+      filename-pattern: logs/smarthelper-%d{yyyy-MM-dd}.log
+smarthelper:
+  assistant:
+    name: Assistant

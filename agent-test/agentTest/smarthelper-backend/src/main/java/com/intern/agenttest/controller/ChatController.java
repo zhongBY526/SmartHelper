@@ -4,6 +4,7 @@ package com.intern.agenttest.controller;
 import com.intern.agenttest.common.Result;
 import com.intern.agenttest.dto.ChatRequest;
 import com.intern.agenttest.service.ChatService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,7 +16,7 @@ public class ChatController {
     }
 
     @PostMapping("/send/")
-    public Result<String> getAiResponse(@RequestBody  ChatRequest chatRequest) {
+    public Result<String> getAiResponse(@RequestBody @Valid ChatRequest chatRequest) {
         return Result.success(chatService.getResponse(chatRequest));
     }
 }
