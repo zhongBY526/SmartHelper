@@ -1,0 +1,25 @@
+# IDEA
+.idea/
+*.iml
+
+# Maven
+**/target/
+
+# Node
+node_modules/
+dist/
+
+# Logs
+*.log
+
+# Environment variables
+.env
+.env.*
+
+# Local configuration
+application-local.yml
+application-local.yaml
+
+# Operating system
+.DS_Store
+Thumbs.db

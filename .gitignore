@@ -1,0 +1,23 @@
+﻿# IntelliJ IDEA
+.idea/
+*.iml
+
+# Java / Maven
+target/
+*.class
+
+# Node.js / Vue
+node_modules/
+dist/
+
+# Logs
+*.log
+
+# Environment and sensitive configuration
+.env
+.env.*
+!.env.example
+
+# OS files
+.DS_Store
+Thumbs.db
