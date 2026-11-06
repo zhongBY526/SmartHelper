@@ -1,12 +1,25 @@
 server:
   port: 8080
+
 spring:
   application:
     name: agentTest
-openai:
-  api-key: ${DEEPSEEK_API_KEY}
-  base-url: https://api.deepseek.com
-  model: deepseek-flash
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/smarthelper
+
+# DeepSeek 使用 OpenAI 兼容协议，由 langchain4j-open-ai-spring-boot-starter 自动创建 ChatModel
+langchain4j:
+  open-ai:
+    chat-model:
+      api-key: ${DEEPSEEK_API_KEY}
+      base-url: https://api.deepseek.com
+      model-name: deepseek-chat
+
+smarthelper:
+  assistant:
+    name: Assistant
+
 logging:
   level:
     root: warn
@@ -14,16 +27,13 @@ logging:
       intern:
         agenttest: info
   file:
-    #==================????==================
-    #????
+    # 当前正在写入的日志文件
     name: logs/smarthelper.log
   logback:
-    rollingPolicy:
-#      ??????
-      max-file-size: 1KB
+    rollingpolicy:
+      # 单个日志文件达到该大小后切分（当前 1KB 仅用于验证滚动，正式环境建议改 10MB）
+      max-file-size: 1MB
       max-history: 30
       total-size-cap: 1GB
-      filename-pattern: logs/smarthelper-%d{yyyy-MM-dd}.log
-smarthelper:
-  assistant:
-    name: Assistant
+      # 归档文件名必须同时包含 %d 和 %i，否则 SizeAndTimeBasedRollingPolicy 无法启动
+      file-name-pattern: logs/smarthelper-%d{yyyy-MM-dd}.%i.log

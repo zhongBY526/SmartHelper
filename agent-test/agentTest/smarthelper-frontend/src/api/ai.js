@@ -1,4 +1,5 @@
 import request from './request'
-export function CheckHealth(){
-    return request.get('/ai/health')
+export function sendMsg(){
+    return request.post('/ai/send')
 }
+

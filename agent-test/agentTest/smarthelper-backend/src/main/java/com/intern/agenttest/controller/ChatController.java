@@ -15,8 +15,9 @@ public class ChatController {
         this.chatService = chatService;
     }
 
-    @PostMapping("/send/")
+    @PostMapping("/send")
     public Result<String> getAiResponse(@RequestBody @Valid ChatRequest chatRequest) {
-        return Result.success(chatService.getResponse(chatRequest));
+        return Result.success(chatService.getResponse(chatRequest.getMemoryId(), chatRequest.getMessage()));
     }
+
 }
